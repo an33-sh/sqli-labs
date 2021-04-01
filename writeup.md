@@ -149,4 +149,12 @@ payload example
 
 YWRtaW5uIiB1bmlvbiBzZWxlY3QgMSwyLDMj :  adminn" union select 1,2,3#
 
+less-23
+=======
+
+This was error based injection but we comment ['#','--'] was filtered
+ but we can get injection
+ 
+ payload : ?id=-1'%20 union select 1,database(),3 or%20 '1'='1
+
 
