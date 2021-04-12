@@ -157,4 +157,21 @@ This was error based injection but we comment ['#','--'] was filtered
  
  payload : ?id=-1'%20 union select 1,database(),3 or%20 '1'='1
 
-
+less-24
+=======
+ In this challenge we don't have injection directly in any forms but in this we have a feature to change password of the user logged in,we can use second order injection 
+ it takes the ``username`` form the database directly from database and it password on the update query without any validation 
+ so we can register a user with the username as our payload so when it takes to update query it will be exicuted
+ 
+ **Exploitaion**
+ * Register a user with username = ``admin'#``
+ * change the password
+   ``in the update query username='admin'# so admins password will be changed``
+ * login as admin with the new password
+ 
+ less-25
+ =======
+ 
+ In this there are some filters in the ``id`` parameter so  we want to bypass that 
+ we can use ``||`` insted of ``OR`` and ``&&`` instead of ``AND``
+ SO payload will be ``?id=1' || 1=1 --+`` ,``?id=1' %26%26 1=1 --+``
