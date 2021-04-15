@@ -202,3 +202,12 @@ less-24
  In this there are some filters in the ``id`` parameter so  we want to bypass that 
  we can use ``||`` insted of ``OR`` and ``&&`` instead of ``AND``
  SO payload will be ``?id=1' || 1=1 --+`` ,``?id=1' %26%26 1=1 --+``
+ 
+ less-26
+ =======
+ 
+ In this lesson the comments and spaces are also filtered so we have to bypass that also to get sql injection
+ * To bypass comment we can use ``'1`` at the end so the backend will add a ``'`` and it becomes ``'1'``
+ * To bypass spaces we can use a non printable character such ``%0a`` or ``%0b`` which will acts as a space at the backend
+ payload:**?id='%0Bunion%0Bselect%0B1,database(),3%0B%26%26%0B'1**
+![image](https://user-images.githubusercontent.com/61080375/114918934-4acfda80-9e45-11eb-9652-e6cf6b5106f9.png)
