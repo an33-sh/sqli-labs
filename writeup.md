@@ -242,4 +242,15 @@ so payload will be:
 
 ![image](https://user-images.githubusercontent.com/61080375/115260182-25e2ac80-a150-11eb-8cf8-728a8f7f52a1.png)
 
+less-27
+=======
+
+In this there is also filter for ``union`` and ``select`` keywords. we can bypass that by mixing capital and small letter in the words union and select
+
+like we can use ``UniOn`` instead of union and ``SeLect`` instead of select this bypass  the filter check and it will be exicuted at backend (*mysql dosen't require qurey to be only capital letter of small letters*)
+
+payload:``?id='%0BUniOn%0BSeLect%0B1,group_concat(username),group_concat(password)%0B from%0Busers%0Bwhere'1``
+
+![image](https://user-images.githubusercontent.com/61080375/115574064-ed250d80-a2de-11eb-9643-a067b2c2c76f.png)
+
 
